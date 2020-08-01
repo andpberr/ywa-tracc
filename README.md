@@ -10,6 +10,16 @@ this as a pet project. I assume that she wouldn't care, since I am not making
 any money off of this, and the only impact it could have on her channel
 is increased viewership (which is good, right?).
 
+**Note 2:** To avoid publicizing my own YouTube API key, I have excluded
+`Properties/launchSettings.json` from the repository. To get the site to run
+on your machine, you will need to have your own `launchSettings.json` file
+with your own API key environment variable declared:
+```
+"environmentVariables": {
+        "YT_API_KEY": "<your key here>",
+}
+  ```
+
 ## Inspiration
 
 I have found that I can't easily build certain habits without some sort of
