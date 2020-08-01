@@ -1,0 +1,12 @@
+﻿@model ywa_tracc.ViewModels.UserActivityViewModel
+@{
+    ViewData["Title"] = "Watch";
+}
+
+<h1>Thanks for watching!</h1>
+<p>If the popup was blocked, click the link to watch <a href="https://www.youtube.com/watch?v=@Model.video.ID"><b>@Model.video.Name</b></a></p>
+<div>Otherwise click <a asp-controller="Home" asp-action="Record" asp-route-id="@Model.video.ID">here</a> to record this session.</div>
+
+<script>
+    window.open("https://www.youtube.com/watch?v=@Model.video.ID");
+</script>
