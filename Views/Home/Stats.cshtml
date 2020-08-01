@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "Stats";
+}
+
+<h1>Stats</h1>
+<p>You are signed in as @User.Identity.Name</p>
+
+<div>
+    <p>Your all-time view count is @ViewBag.Activities.Count. Way to go!</p>
+
+    @if (ViewBag.Activities.Count > 0)
+    {
+        <table>
+            <tr>
+                <th>Video Title</th>
+                <th>Watched Datetime</th>
+                <th>Duration (minutes)</th>
+            </tr>
+        @foreach (var vd in ViewBag.Activities)
+        {
+            <tr>
+                <td>@vd.Video.Name</td>
+                <td>@vd.WatchDate</td>
+                <td>@vd.Video.Duration</td>
+            </tr>
+        }
+        </table>
+    }
+
+</div>

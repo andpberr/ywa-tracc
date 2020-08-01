@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    @if (User.Identity.IsAuthenticated)
+    {
+    <h1 class="display-4">Welcome, @User.Identity.Name!</h1>
+    <p><a asp-action="Select">Select a video</a> to log some time on the mat.</p>
+    <p>Or, click <a asp-action="Stats">here</a> to see your yoga stats.</p>
+    } else
+    {
+        <h1 class="display-4">Welcome</h1>
+        <p><a asp-area="Identity" asp-page="/Account/Login">Log in or sign up</a> to get started!</p>
+    }
+</div>

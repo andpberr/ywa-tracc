@@ -1,0 +1,40 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>Select a Video</h1>
+<div id="filderDiv">
+    <label for="vidFilter">Filter videos:</label><input id="vidFilter" />
+</div>
+<div id="vidGrid">
+    @foreach(var vid in ViewBag.Vids)
+    {
+        <div class="vidContainer">
+            <a asp-controller="Home" asp-action="Watch" asp-route-id="@vid.ID">
+            <!--<a href="http://www.youtube.com/watch?v=@vid.ID" target="_blank" rel="noreferrer">-->
+                <div class="vidLink">
+                    @vid.Name
+                    <img class="vidThumb" src="@vid.ThumbnailURL"/>
+                </div>
+            </a>
+        </div>
+    }
+</div>
+<script>
+    $(document).ready(() => {
+        // Define icontains selector, found on StackOverflow (handy!)
+        jQuery.expr[':'].icontains = function(a, i, m) {
+          return jQuery(a).text().toUpperCase()
+              .indexOf(m[3].toUpperCase()) >= 0;
+        };
+
+
+        $("#vidFilter").on("input",() => {
+            let search = $("#vidFilter").val();
+            $(`.vidContainer:icontains(${search})`).show();
+            $(`.vidContainer:not(:icontains(${search}))`).hide();
+        });
+    });
+</script>
