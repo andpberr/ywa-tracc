@@ -31,7 +31,7 @@ namespace Google.Apis.YouTube.Samples
         {
             var youtubeService = new YouTubeService(new BaseClientService.Initializer()
             {
-                ApiKey = Environment.GetEnvironmentVariable("YT_API_KEY"),
+                ApiKey = AWSSecrets.Helpers.GetYTAPIKey(),
                 ApplicationName = "Search"
             });
 
@@ -129,7 +129,7 @@ namespace Google.Apis.YouTube.Samples
             {
                 var youtubeService = new YouTubeService(new BaseClientService.Initializer()
                 {
-                    ApiKey = Environment.GetEnvironmentVariable("YT_API_KEY"),
+                    ApiKey = AWSSecrets.Helpers.GetYTAPIKey(),
                     ApplicationName = "Video"
                 });
 

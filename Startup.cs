@@ -17,19 +17,34 @@ namespace ywa_tracc
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
             Configuration = configuration;
+            HostingEnvironment = environment;
         }
 
         public IConfiguration Configuration { get; }
+        public IWebHostEnvironment HostingEnvironment { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+
+            if (HostingEnvironment.IsDevelopment()) {
+                services.AddDbContext<ApplicationDbContext>(options =>
+                    options.UseNpgsql(AWSSecrets.Helpers.GetConnectionString())
+                    );
+                //services.AddDbContext<ApplicationDbContext>(options =>
+                    //options.UseSqlServer(
+                        //Configuration.GetConnectionString("DefaultConnection")));
+            } 
+            else 
+            {
+                services.AddDbContext<ApplicationDbContext>(options =>
+                    options.UseNpgsql(AWSSecrets.Helpers.GetConnectionString())
+                    );
+            }
+
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
