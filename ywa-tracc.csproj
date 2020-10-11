@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <RootNamespace>ywa_tracc</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20200729235209_UserActivityPKAnnotate.cs" />
+    <Compile Remove="Data\Migrations\20200729235209_UserActivityPKAnnotate.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.SecretsManager" Version="3.5.0.26" />
+    <PackageReference Include="Google.Apis" Version="1.48.0" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.48.0" />
+    <PackageReference Include="Google.Apis.YouTube.v3" Version="1.47.0.2008" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="[3.0,3.1)" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="[3.0,3.1]" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="[3.0,3.1]" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="[3.0,3.1]" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="[3.0,3.1]" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="[3.0,3.1]" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.4" />
+  </ItemGroup>
+
+</Project>
